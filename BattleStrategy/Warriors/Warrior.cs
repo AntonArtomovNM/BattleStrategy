@@ -18,6 +18,9 @@ namespace BattleStrategy.Warriors
         private int vampirism;
         private int healingPower;
 
+        /// <summary>
+        /// Shows the max amount of hp this unit can have (including weapon bonus)
+        /// </summary>
         public int MaxHP
         {
             get => maxHP;
@@ -27,49 +30,59 @@ namespace BattleStrategy.Warriors
                 hp = maxHP;
             }
         }
-
+        /// <summary>
+        /// Shows the damage of this unit (including weapon bonus)
+        /// </summary>
         public int Damage 
         {
             get => damage;
             internal set => damage = Math.Clamp(value, 0, int.MaxValue);
         }
-
+        /// <summary>
+        /// Shows the attack range of this unit (including weapon bonus)
+        /// </summary>
         public int AttackRange
         {
             get => attackRange;
             internal set => attackRange = Math.Clamp(value, 1, int.MaxValue);
         }
-
+        /// <summary>
+        /// Shows the defence of this unit (including weapon bonus)
+        /// </summary>
         public int Defence
         {
             get => defence;
             internal set => defence = Math.Clamp(value, 0, int.MaxValue);
         }
-
+        /// <summary>
+        /// Shows the vampirism power of this unit in percentage (including weapon bonus).
+        /// Vampirism heals the warrior when they attack, as a percentage of the damage dealt
+        /// </summary>
         public int Vampirism
         {
             get => vampirism;
             internal set => vampirism = Math.Clamp(value, 0, 100);
         }
-
+        /// <summary>
+        /// Shows the healing power of this unit (including weapon bonus).
+        /// Healing power lets the warrior heal one unit right in front of them when that unit deals damage
+        /// </summary>
         public int HealingPower
         {
             get => healingPower;
             internal set => healingPower = Math.Clamp(value, 0, int.MaxValue);
         }
-
         /// <summary>
         /// Shows if warrior's HP is greater than 0
         /// </summary>
         public bool IsAlive => hp > 0;
-
         /// <summary>
         /// Shows warrior's type
         /// </summary>
         public WarriorType Type { get; internal set; }
 
         /// <summary>
-        /// Heals this warrior by some amount, cannot heal over max HP
+        /// Heals this warrior by some amount. Cannot heal over max HP
         /// </summary>
         /// <param name="amount">Amount of healing</param>
         public void Heal(int amount)

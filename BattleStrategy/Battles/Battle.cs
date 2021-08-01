@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using BattleStrategy.Warriors;
 using BattleStrategy.Interfaces;
 
@@ -94,6 +93,40 @@ namespace BattleStrategy.Battles
             return army1.IsAlive;
         }
 
-        public bool Fight<T>(IAttacker<T> t, IAttacker<T> h) where T : class { throw new NotImplementedException(); }
+        /// <summary>
+        /// Performs a set of attacks from the first warrior to the second warrior and vice versa until one of them dies
+        /// </summary>
+        /// <param name="warrior1">First warrior</param>
+        /// <param name="warrior2">Second warrior</param>
+        /// <returns>True if the first warrior survives the fight, false if the second warrior survives</returns>
+        /// <exception cref="ArgumentNullException">Thrown if parameter was null</exception>
+        public bool Fight(Warrior warrior1, Warrior warrior2)
+        {
+            return Fight(warrior1, warrior2, null);
+        }
+
+        /// <summary>
+        /// Performs a set of attacks from the first rank to the second rank and vice versa until one of them dies
+        /// </summary>
+        /// <param name="rank1">First rank</param>
+        /// <param name="rank2">Second rank</param>
+        /// <returns>True if the first rank survives the fight, false if the second rank survives</returns>
+        /// <exception cref="ArgumentNullException">Thrown if parameter was null</exception>
+        public bool Fight(Rank rank1, Rank rank2)
+        {
+            return Fight(rank1, rank2, null);
+        }
+
+        /// <summary>
+        /// Performs a set of attacks from the first army to the second army and vice versa until one of them dies
+        /// </summary>
+        /// <param name="army1">First army</param>
+        /// <param name="army2">Second army</param>
+        /// <returns>True if the first army survives the fight, false if the second army survives</returns>
+        /// <exception cref="ArgumentNullException">Thrown if parameter was null</exception>
+        public bool Fight(Army army1, Army army2)
+        {
+            return Fight(army1, army2, null);
+        }
     }
 }
