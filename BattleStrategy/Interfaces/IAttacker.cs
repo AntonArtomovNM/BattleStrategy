@@ -13,7 +13,7 @@ namespace BattleStrategy.Interfaces
         /// <summary>
         /// Shows the attacker's name
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
         /// <summary>
         /// Shows if attacker themself are alive and ready for attack
         /// </summary>

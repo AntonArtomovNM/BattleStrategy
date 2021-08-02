@@ -17,6 +17,7 @@ namespace BattleStrategy.Warriors
         private int defence;
         private int vampirism;
         private int healingPower;
+        private string name;
 
         /// <summary>
         /// Shows the max amount of hp this unit can have (including weapon bonus)
@@ -72,7 +73,6 @@ namespace BattleStrategy.Warriors
             get => healingPower;
             internal set => healingPower = Math.Clamp(value, 0, int.MaxValue);
         }
-        public string Name { get => Type.ToString(); }
         /// <summary>
         /// Shows if warrior's HP is greater than 0
         /// </summary>
@@ -81,6 +81,19 @@ namespace BattleStrategy.Warriors
         /// Shows warrior's type
         /// </summary>
         public WarriorType Type { get; internal set; }
+        public string Name
+        {
+            get
+            {
+                if (name == null || name == string.Empty)
+                    return Type.ToString();
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
 
         /// <summary>
         /// Heals this warrior by some amount. Cannot heal over max HP

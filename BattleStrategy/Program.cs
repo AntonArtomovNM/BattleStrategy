@@ -8,7 +8,6 @@ namespace BattleStrategy
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             Battle battle = new Battle();
@@ -43,18 +42,20 @@ namespace BattleStrategy
             bool result;
             int expectedCount;
             int actualCount;
-            Rank rank1 = new Rank(new Warrior[] { lancer }, "Left");
-            Rank rank2 = new Rank(new Warrior[] { warrior, healer }, "Right");
+            Rank rank1 = new Rank(new Warrior[] { lancer }) { Name = "Left"};
+            Rank rank2 = new Rank(new Warrior[] { warrior, healer }) { Name = "Right"};
             Army army1 = new Army(new Rank[]
             {
                 rank1,
                 new Rank(new Warrior[] {defender, vampire, trainer.Create(wb)})
-            }, "Left");
+            })
+            { Name = "Left" };
             Army army2 = new Army(new Rank[]
             {
                 rank2,
                 new Rank(new Warrior[] {trainer.Create(lb), knight})
-            }, "Right");
+            })
+            { Name = "Right" };
             //Act
             //result = battle.Fight(rank1, rank2, cv);
             //cv.ShowBattle(army1, army2);

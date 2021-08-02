@@ -10,14 +10,27 @@ namespace BattleStrategy.Battles
     public class Rank :IBattleStructure<Warrior, Rank>, IReversible
     {
         readonly List<Warrior> warriors;
+        private string name;
 
         /// <summary>
         /// Gets the first unit of the rank
         /// </summary>
         public Warrior FirstUnit => warriors.Count > 0 ? warriors[0] : null;
-        public string Name { get; }
         public int Count => warriors.Count;
         public bool IsAlive => warriors.Exists(w => w.IsAlive);
+        public string Name
+        {
+            get
+            {
+                if (name == null || name == string.Empty)
+                    return GetType().Name;
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
 
         public Warrior this[int index]
         {
@@ -33,7 +46,7 @@ namespace BattleStrategy.Battles
         /// <summary>
         /// Creates a rank object
         /// </summary>
-        public Rank(string name = "Rank")
+        public Rank()
         {
             warriors = new List<Warrior>();
             Name = name;
@@ -44,7 +57,7 @@ namespace BattleStrategy.Battles
         /// </summary>
         /// <param name="units">Units to be added</param>
         /// <exception cref="ArgumentNullException">Thrown if parameter was null</exception>
-        public Rank(IEnumerable<Warrior> units, string name = "Rank") : this(name)
+        public Rank(IEnumerable<Warrior> units) : this()
         {
             if (units == null)
                 throw new ArgumentNullException();

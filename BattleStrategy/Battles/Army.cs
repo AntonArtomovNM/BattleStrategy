@@ -11,10 +11,23 @@ namespace BattleStrategy.Battles
     public class Army : IBattleStructure<Rank, Army>, IReversible
     {
         readonly List<Rank> ranks;
+        private string name;
 
-        public string Name { get; }
         public int Count => ranks.Count;
         public bool IsAlive => ranks.Exists(r => r.IsAlive);
+        public string Name
+        {
+            get
+            {
+                if (name == null || name == string.Empty)
+                    return GetType().Name;
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
 
         public Rank this[int index]
         {
@@ -30,7 +43,7 @@ namespace BattleStrategy.Battles
         /// <summary>
         /// Creates an army object
         /// </summary>
-        public Army(string name = "Army")
+        public Army()
         {
             ranks = new List<Rank>();
             Name = name; 
@@ -41,7 +54,7 @@ namespace BattleStrategy.Battles
         /// </summary>
         /// <param name="ranks">Ranks to be added</param>
         /// <exception cref="ArgumentNullException">Thrown if parameter was null</exception>
-        public Army (IEnumerable<Rank> ranks, string name = "Army") : this(name)
+        public Army (IEnumerable<Rank> ranks) : this()
         {
             if (ranks == null)
                 throw new ArgumentNullException();
