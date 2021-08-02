@@ -72,6 +72,7 @@ namespace BattleStrategy.Warriors
             get => healingPower;
             internal set => healingPower = Math.Clamp(value, 0, int.MaxValue);
         }
+        public string Name { get => Type.ToString(); }
         /// <summary>
         /// Shows if warrior's HP is greater than 0
         /// </summary>

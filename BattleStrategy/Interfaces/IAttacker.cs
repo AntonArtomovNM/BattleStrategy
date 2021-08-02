@@ -11,7 +11,11 @@ namespace BattleStrategy.Interfaces
     public interface IAttacker<T> where T : class
     {
         /// <summary>
-        /// Shows if attacker itself alive and ready for attack
+        /// Shows the attacker's name
+        /// </summary>
+        public string Name { get; }
+        /// <summary>
+        /// Shows if attacker themself are alive and ready for attack
         /// </summary>
         public bool IsAlive { get; }
         /// <summary>

@@ -51,9 +51,16 @@ namespace BattleStrategy.Visualizers
             Console.WriteLine();
         }
 
-        public void ShowBattleResult<T>(IAttacker<T> attacker1, IAttacker<T> attacker2, bool haveWon) where T : class
+        public void ShowBattleResult<T>(IAttacker<T> winner) where T : class
         {
-            throw new NotImplementedException();
+            builder.Clear();
+            builder.Append('▬', 26 + winner.Name.Length);
+            builder.Append("\n\t");
+            builder.Append(winner.Name);
+            builder.AppendLine(" have won!");
+            builder.Append('▬', 26 + winner.Name.Length);
+            builder.AppendLine();
+            Console.WriteLine(builder.ToString());
         }
 
         private void ShowHeader<T, U>(IBattleStructure<T, U> structure1, IBattleStructure<T, U> structure2, ref int maxStringLength) where U : class

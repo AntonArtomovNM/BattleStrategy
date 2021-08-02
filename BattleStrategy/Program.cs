@@ -37,7 +37,7 @@ namespace BattleStrategy
             var vampire = trainer.Create(vb);
             var lancer = trainer.Create(lb);
             var healer = trainer.Create(hb);
-            //Console.WriteLine(battle.Fight(vampire, warrior));
+            //Console.WriteLine(battle.Fight(vampire, warrior, cv));
 
             //Arrange
             bool result;

@@ -15,7 +15,7 @@ namespace BattleStrategy.Battles
         /// Gets the first unit of the rank
         /// </summary>
         public Warrior FirstUnit => warriors.Count > 0 ? warriors[0] : null;
-        public string Name { get; set; }
+        public string Name { get; }
         public int Count => warriors.Count;
         public bool IsAlive => warriors.Exists(w => w.IsAlive);
 

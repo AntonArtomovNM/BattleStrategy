@@ -29,9 +29,7 @@ namespace BattleStrategy.Interfaces
         /// <summary>
         /// Displayes battle result in attacker vs attacker fight
         /// </summary>
-        /// <param name="attacker1">First attacker</param>
-        /// <param name="attacker2">Second attacker</param>
-        /// <param name="haveWon">Shows if the first attacker have won</param>
-        public void ShowBattleResult<T>(IAttacker<T> attacker1, IAttacker<T> attacker2, bool haveWon) where T : class;
+        /// <param name="winner">Winning attacker</param>
+        public void ShowBattleResult<T>(IAttacker<T> winner) where T : class;
     }
 }

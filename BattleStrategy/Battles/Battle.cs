@@ -28,6 +28,7 @@ namespace BattleStrategy.Battles
                 warrior2.Attack(warrior1);
                 visualizer?.ShowBattle(warrior1, warrior2);
             }
+            visualizer?.ShowBattleResult(warrior1.IsAlive ? warrior1 : warrior2);
             return warrior1.IsAlive;
         }
 
@@ -59,6 +60,7 @@ namespace BattleStrategy.Battles
                     visualizer?.ShowBattle(rank1, rank2);
                 }
             }
+            visualizer?.ShowBattleResult(rank1.IsAlive ? rank1 : rank2);
             return rank1.IsAlive;
         }
 
@@ -90,6 +92,7 @@ namespace BattleStrategy.Battles
                     visualizer?.ShowBattle(army1, army2);
                 }
             }
+            visualizer?.ShowBattleResult(army1.IsAlive ? army1 : army2);
             return army1.IsAlive;
         }
 

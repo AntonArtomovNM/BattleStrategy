@@ -12,11 +12,6 @@ namespace BattleStrategy.Interfaces
     public interface IBattleStructure<T, U> : IEnumerable<T>, IAttacker<U> where U : class
     {
         /// <summary>
-        /// Represents the name of the structure
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
         /// Shows the amount of structure elements
         /// </summary>
         public int Count { get; }

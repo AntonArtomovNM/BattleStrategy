@@ -12,7 +12,7 @@ namespace BattleStrategy.Battles
     {
         readonly List<Rank> ranks;
 
-        public string Name { get; set; }
+        public string Name { get; }
         public int Count => ranks.Count;
         public bool IsAlive => ranks.Exists(r => r.IsAlive);
 
