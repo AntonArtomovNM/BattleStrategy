@@ -449,7 +449,6 @@ namespace BattleStrategy.UnitTests
     [TestFixture]
     class BattleTests 
     {
-        Battle battle;
         Army army1;
         Army army2;
         ArmyUnitTrainer trainer;
@@ -464,7 +463,6 @@ namespace BattleStrategy.UnitTests
         [SetUp]
         public void SetUp()
         {
-            battle = new Battle();
             trainer = new ArmyUnitTrainer();
             warriorBuilder = new WarriorBuilder();
             knightBuilder = new KnightBuilder();
@@ -495,7 +493,7 @@ namespace BattleStrategy.UnitTests
 
             //Act
             warrior = trainer.Create(warriorBuilder);
-            result = battle.Fight(warrior, assortedWarriors[(int)WarriorType.Warrior]);
+            result = Battle.Fight(warrior, assortedWarriors[(int)WarriorType.Warrior]);
 
             //Assert
             Assert.IsTrue(result);
@@ -508,7 +506,7 @@ namespace BattleStrategy.UnitTests
             bool result;
 
             //Act
-            result = battle.Fight(assortedWarriors[(int)WarriorType.Warrior], assortedWarriors[(int)WarriorType.Knight]);
+            result = Battle.Fight(assortedWarriors[(int)WarriorType.Warrior], assortedWarriors[(int)WarriorType.Knight]);
 
             //Assert
             Assert.IsFalse(result);
@@ -521,7 +519,7 @@ namespace BattleStrategy.UnitTests
             bool result;
 
             //Act
-            result = battle.Fight(assortedWarriors[(int)WarriorType.Warrior], assortedWarriors[(int)WarriorType.Defender]);
+            result = Battle.Fight(assortedWarriors[(int)WarriorType.Warrior], assortedWarriors[(int)WarriorType.Defender]);
 
             //Assert
             Assert.IsFalse(result);
@@ -534,7 +532,7 @@ namespace BattleStrategy.UnitTests
             bool result;
 
             //Act
-            result = battle.Fight(assortedWarriors[(int)WarriorType.Defender], assortedWarriors[(int)WarriorType.Vampire]);
+            result = Battle.Fight(assortedWarriors[(int)WarriorType.Defender], assortedWarriors[(int)WarriorType.Vampire]);
 
             //Assert
             Assert.IsTrue(result);
@@ -547,7 +545,7 @@ namespace BattleStrategy.UnitTests
             bool result;
 
             //Act
-            result = battle.Fight(assortedWarriors[(int)WarriorType.Vampire], assortedWarriors[(int)WarriorType.Warrior]);
+            result = Battle.Fight(assortedWarriors[(int)WarriorType.Vampire], assortedWarriors[(int)WarriorType.Warrior]);
 
             //Assert
             Assert.IsTrue(result);
@@ -561,7 +559,7 @@ namespace BattleStrategy.UnitTests
             bool result;
 
             //Act
-            battleResult = battle.Fight(assortedWarriors[(int)WarriorType.Warrior], assortedWarriors[(int)WarriorType.Knight]);
+            battleResult = Battle.Fight(assortedWarriors[(int)WarriorType.Warrior], assortedWarriors[(int)WarriorType.Knight]);
             result = assortedWarriors[(int)WarriorType.Knight].IsAlive;
 
             //Assert
@@ -587,7 +585,7 @@ namespace BattleStrategy.UnitTests
             });
 
             //Act
-            result = battle.Fight(rank1, rank2);
+            result = Battle.Fight(rank1, rank2);
             expectedCount = 1;
             actualCount = rank2.Count;
 
@@ -614,7 +612,7 @@ namespace BattleStrategy.UnitTests
             });
 
             //Act
-            result = battle.Fight(rank1, rank2);
+            result = Battle.Fight(rank1, rank2);
             expectedCount = 2;
             actualCount = rank2.Count;
 
@@ -642,7 +640,7 @@ namespace BattleStrategy.UnitTests
             });
 
             //Act
-            result = battle.Fight(rank1, rank2);
+            result = Battle.Fight(rank1, rank2);
             expectedCount = 2;
             actualCount = rank1.Count;
 

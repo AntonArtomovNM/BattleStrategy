@@ -2,7 +2,6 @@
 using BattleStrategy.Warriors;
 using BattleStrategy.Battles;
 using BattleStrategy.Visualizers;
-using System.Threading.Tasks;
 
 namespace BattleStrategy
 {
@@ -10,7 +9,6 @@ namespace BattleStrategy
     {
         static void Main(string[] args)
         {
-            Battle battle = new Battle();
             ConsoleVisualizer cv = new ConsoleVisualizer();
             ArmyUnitTrainer trainer = new ArmyUnitTrainer();
             WarriorBuilder wb = new WarriorBuilder();
@@ -59,7 +57,7 @@ namespace BattleStrategy
             //Act
             //result = battle.Fight(rank1, rank2, cv);
             //cv.ShowBattle(army1, army2);
-            result = battle.Fight(army1, army2, cv);
+            result = Battle.Fight(army1, army2, cv);
             expectedCount = 2;
             actualCount = army2.Count;
 
