@@ -55,7 +55,7 @@ namespace BattleStrategy
             })
             { Name = "Right" };
             //Act
-            //result = battle.Fight(rank1, rank2, cv);
+            //result = Battle.Fight(rank1, rank2, cv);
             //cv.ShowBattle(army1, army2);
             result = Battle.Fight(army1, army2, cv);
             expectedCount = 2;

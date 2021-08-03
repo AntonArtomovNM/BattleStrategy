@@ -20,19 +20,21 @@ namespace BattleStrategy.Warriors
         private string name;
 
         /// <summary>
-        /// Shows the max amount of hp this unit can have (including weapon bonus)
+        /// Shows the max amount of hp this unit can have (including weapon bonus).
+        /// Cannot be less than 1
         /// </summary>
         public int MaxHP
         {
             get => maxHP;
             internal set
             {
-                maxHP = Math.Clamp(value, 0, int.MaxValue);
+                maxHP = Math.Clamp(value, 1, int.MaxValue);
                 hp = maxHP;
             }
         }
         /// <summary>
-        /// Shows the damage of this unit (including weapon bonus)
+        /// Shows the damage of this unit (including weapon bonus).
+        /// Cannot be less than 0
         /// </summary>
         public int Damage 
         {
@@ -40,7 +42,8 @@ namespace BattleStrategy.Warriors
             internal set => damage = Math.Clamp(value, 0, int.MaxValue);
         }
         /// <summary>
-        /// Shows the attack range of this unit (including weapon bonus)
+        /// Shows the attack range of this unit (including weapon bonus).
+        /// Cannot be less than 1
         /// </summary>
         public int AttackRange
         {
@@ -48,12 +51,13 @@ namespace BattleStrategy.Warriors
             internal set => attackRange = Math.Clamp(value, 1, int.MaxValue);
         }
         /// <summary>
-        /// Shows the defence of this unit (including weapon bonus)
+        /// Shows the defence of this unit (including weapon bonus).
+        /// Can be negative
         /// </summary>
         public int Defence
         {
             get => defence;
-            internal set => defence = Math.Clamp(value, 0, int.MaxValue);
+            internal set => defence = value;
         }
         /// <summary>
         /// Shows the vampirism power of this unit in percentage (including weapon bonus).
@@ -81,6 +85,9 @@ namespace BattleStrategy.Warriors
         /// Shows warrior's type
         /// </summary>
         public WarriorType Type { get; internal set; }
+        /// <summary>
+        /// Shows warrior's name or type if no name was given
+        /// </summary>
         public string Name
         {
             get
@@ -153,7 +160,7 @@ namespace BattleStrategy.Warriors
             if (target == null)
                 throw new ArgumentNullException();
 
-            int result = Math.Clamp(Damage - target.Defence, 0, Damage);
+            int result = Math.Clamp(Damage - target.Defence, 0, int.MaxValue);
             return result;
         }
 
@@ -171,7 +178,7 @@ namespace BattleStrategy.Warriors
             if (visualizer == null)
                 throw new ArgumentNullException();
 
-            visualizer.Show($"\t\t\t{Type}\nHP = {hp,-8} | Attack = {Damage,-9} | Vampirism = {Vampirism}%" +
+            visualizer.Show($"\t\t\t{Name}\nHP = {hp,-8} | Attack = {Damage,-9} | Vampirism = {Vampirism}%" +
                 $"\nDefence = {Defence,-3} | Attack range = {AttackRange,-3} | Healing power = {HealingPower}\n");
         }
 

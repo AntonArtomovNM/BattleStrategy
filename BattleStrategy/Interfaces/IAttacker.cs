@@ -15,7 +15,7 @@ namespace BattleStrategy.Interfaces
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// Shows if attacker themself are alive and ready for attack
+        /// Shows if attacker themself are alive and ready to attack
         /// </summary>
         public bool IsAlive { get; }
         /// <summary>
