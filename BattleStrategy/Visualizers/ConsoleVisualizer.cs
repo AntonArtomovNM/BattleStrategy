@@ -65,8 +65,8 @@ namespace BattleStrategy.Visualizers
 
         private void ShowHeader<T, U>(IBattleStructure<T, U> structure1, IBattleStructure<T, U> structure2, ref int maxStringLength) where U : class
         {
-            string name1 = $" {structure1.Name} " + structure1.GetType().Name;
-            string name2 = $" {structure2.Name} " + structure2.GetType().Name;
+            string name1 = $"{structure1.Name} " + structure1.GetType().Name;
+            string name2 = $"{structure2.Name} " + structure2.GetType().Name;
 
             maxStringLength = Math.Max(maxStringLength, Math.Max(name1.Length, name2.Length));
 
